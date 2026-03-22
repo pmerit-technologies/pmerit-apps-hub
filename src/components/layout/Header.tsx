@@ -1,25 +1,26 @@
+import { Grid2x2 } from 'lucide-react'
+
 export function Header() {
   return (
     <header className="glass-header sticky top-0 z-50 border-b border-hub-border">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Logo + Brand */}
-        <a href="/" className="flex items-center gap-3 no-underline">
-          <img
-            src="/pmerit_lockup.svg"
-            alt="PMERIT"
-            className="h-8"
-            onError={(e) => {
-              // Fallback if SVG not available
-              e.currentTarget.style.display = 'none'
-            }}
-          />
-          <span className="text-lg font-bold font-heading text-hub-text hidden sm:inline">
-            Apps
-          </span>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
+        {/* Logo — icon + wordmark */}
+        <a href="/" className="flex items-center gap-2.5 no-underline">
+          <div className="w-8 h-8 rounded-lg bg-hub-accent/15 flex items-center justify-center">
+            <Grid2x2 size={16} className="text-hub-accent" />
+          </div>
+          <div className="flex items-baseline gap-1.5">
+            <span className="text-sm sm:text-base font-bold font-heading text-hub-text">
+              PMERIT
+            </span>
+            <span className="text-sm sm:text-base font-semibold text-hub-text-secondary">
+              Apps
+            </span>
+          </div>
         </a>
 
-        {/* Nav */}
-        <nav className="flex items-center gap-4">
+        {/* Minimal nav — hide on very small screens */}
+        <nav className="hidden sm:flex items-center gap-4">
           <a
             href="https://technologies.pmerit.com"
             target="_blank"

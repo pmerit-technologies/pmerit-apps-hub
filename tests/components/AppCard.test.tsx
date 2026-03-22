@@ -34,27 +34,25 @@ describe('AppCard', () => {
     expect(screen.getByText('Household')).toBeInTheDocument()
   })
 
-  it('renders "Open App" link for live apps', () => {
+  it('renders "GET" button for live apps', () => {
     render(<AppCard app={liveApp} />)
-    const link = screen.getByText('Open App')
-    expect(link).toBeInTheDocument()
-    expect(link.closest('a')).toHaveAttribute('href', 'https://test.pmerit.com')
+    expect(screen.getByText('GET')).toBeInTheDocument()
   })
 
-  it('renders disabled "Coming Soon" button for coming-soon apps', () => {
-    render(<AppCard app={comingSoonApp} />)
-    const button = screen.getByRole('button', { name: 'Coming Soon' })
-    expect(button).toBeInTheDocument()
-    expect(button).toBeDisabled()
-  })
-
-  it('renders Live badge for live apps', () => {
+  it('wraps live app in a link to the app URL', () => {
     render(<AppCard app={liveApp} />)
-    expect(screen.getByTestId('badge-live')).toBeInTheDocument()
+    const link = screen.getByTestId('app-card-test-live').closest('a')
+    expect(link).toHaveAttribute('href', 'https://test.pmerit.com')
   })
 
   it('renders Coming Soon badge for coming-soon apps', () => {
     render(<AppCard app={comingSoonApp} />)
     expect(screen.getByTestId('badge-coming-soon')).toBeInTheDocument()
+  })
+
+  it('does not wrap coming-soon apps in a link', () => {
+    render(<AppCard app={comingSoonApp} />)
+    const card = screen.getByTestId('app-card-test-coming')
+    expect(card.closest('a')).toBeNull()
   })
 })

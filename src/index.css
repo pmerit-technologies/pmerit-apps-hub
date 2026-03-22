@@ -24,29 +24,47 @@
 body {
   margin: 0;
   min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
   font-family: var(--font-body);
   background: var(--color-hub-bg);
   color: var(--color-hub-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
 }
 
-/* Card hover glow effect */
-.card-glow {
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+/* Dynamic viewport height utility */
+.h-dvh {
+  height: 100vh;
+  height: 100dvh;
 }
 
-.card-glow:hover {
-  transform: translateY(-4px);
-  border-color: var(--color-hub-accent);
-  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.12);
+/* Card hover glow effect — desktop only */
+@media (hover: hover) {
+  .card-glow {
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card-glow:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-hub-accent);
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.12);
+  }
+}
+
+/* Card tap effect — touch devices */
+@media (hover: none) {
+  .card-glow:active {
+    transform: scale(0.97);
+    transition: transform 0.1s ease;
+  }
 }
 
 /* Hero gradient */
@@ -72,4 +90,53 @@ body {
   background: rgba(10, 22, 40, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+}
+
+/* Install banner slide-down */
+.install-banner {
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Hide scrollbar but allow scroll — app store feel */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* iOS safe area support */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .glass-header {
+    padding-top: env(safe-area-inset-top);
+  }
+  footer {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }
