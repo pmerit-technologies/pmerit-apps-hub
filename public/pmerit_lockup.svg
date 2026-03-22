@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="240" viewBox="0 0 900 240" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="240" fill="white"/>
+  <!-- Icon -->
+  <image href="pmerit_icon_256x256.png" x="24" y="-8" width="256" height="256" />
+  <!-- Wordmark -->
+  <text x="310" y="150"
+        font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+        font-size="96" font-weight="800" fill="#081838" letter-spacing="2">
+    PMERIT
+  </text>
+  <text x="314" y="192"
+        font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+        font-size="28" font-weight="500" fill="#18B0A0">
+    People • Merit
+  </text>
+</svg>

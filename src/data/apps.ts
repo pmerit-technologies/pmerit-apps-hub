@@ -1,0 +1,62 @@
+import type { AppInfo } from '../types/app.ts'
+
+export const apps: AppInfo[] = [
+  {
+    id: 'pantryos',
+    name: 'PantryOS',
+    description: 'Track food, reduce waste, save money. The intelligent operating system for your pantry.',
+    status: 'live',
+    category: 'Household',
+    url: 'https://pantryos.pmerit.com',
+    icon: 'UtensilsCrossed',
+  },
+  {
+    id: 'aixord',
+    name: 'AIXORD',
+    description: 'AI-governed project execution. Plan, build, and ship software with structured governance.',
+    status: 'live',
+    category: 'AI Tools',
+    url: 'https://aixord.pmerit.com',
+    icon: 'Brain',
+  },
+  {
+    id: 'life-systems',
+    name: 'Life Systems AI',
+    description: 'Your personal AI assistant for daily life decisions, health tracking, and goal management.',
+    status: 'coming-soon',
+    category: 'Personal AI',
+    icon: 'Sparkles',
+  },
+  {
+    id: 'tax-assistant',
+    name: 'Tax Assistant',
+    description: 'Simplified tax preparation and planning. Maximize returns with AI-powered guidance.',
+    status: 'coming-soon',
+    category: 'Finance',
+    icon: 'Calculator',
+  },
+  {
+    id: 'legal-assistant',
+    name: 'Legal Assistant',
+    description: 'Understand legal documents, contracts, and rights with plain-language AI analysis.',
+    status: 'coming-soon',
+    category: 'Legal',
+    icon: 'Scale',
+  },
+  {
+    id: 'benefits-navigator',
+    name: 'Benefits Navigator',
+    description: 'Find and apply for benefits you qualify for. Social services, healthcare, and financial aid.',
+    status: 'coming-soon',
+    category: 'HR / Finance',
+    icon: 'Shield',
+  },
+  {
+    id: 'immigration-assistant',
+    name: 'Immigration Assistant',
+    description: 'Navigate immigration processes, visa applications, and citizenship pathways with confidence.',
+    status: 'coming-soon',
+    category: 'Legal',
+    icon: 'Globe',
+  },
+]
