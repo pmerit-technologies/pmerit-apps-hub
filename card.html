@@ -211,9 +211,47 @@
     color: #00D4FF;
     text-align: center;
   }
+
+  /* ===== EXPORT TOOLBAR ===== */
+  .toolbar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .toolbar button {
+    padding: 10px 24px;
+    border: 1px solid #00D4FF;
+    background: rgba(0, 212, 255, 0.1);
+    color: #00D4FF;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .toolbar button:hover {
+    background: rgba(0, 212, 255, 0.25);
+  }
+
+  .toolbar button:disabled {
+    opacity: 0.4;
+    cursor: wait;
+  }
+
+  @media print { .toolbar, .label { display: none; } }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
+
+<div class="toolbar">
+  <button onclick="exportCard('.front', 'pmerit-card-front.png')">Download Front (PNG)</button>
+  <button onclick="exportCard('.back', 'pmerit-card-back.png')">Download Back (PNG)</button>
+  <button onclick="exportCard('.front', 'pmerit-card-front.png'); setTimeout(() => exportCard('.back', 'pmerit-card-back.png'), 500)">Download Both</button>
+</div>
 
 <p class="label">Front — 3.5" × 2" at 300 DPI (1050 × 600 px)</p>
 <div class="card front">
@@ -240,7 +278,7 @@
 
     <div class="footer-info">
       <div class="url">apps.pmerit.com</div>
-      <div class="entity">by PMERIT Technologies &middot; Caribou, Maine</div>
+      <div class="entity">support@pmerit.com &middot; Caribou, Maine</div>
     </div>
   </div>
 
@@ -260,5 +298,32 @@
   <div class="back-url">apps.pmerit.com</div>
 </div>
 
+<script>
+function exportCard(selector, filename) {
+  const card = document.querySelector(selector);
+  const btn = event.target;
+  btn.disabled = true;
+  btn.textContent = 'Exporting...';
+
+  html2canvas(card, {
+    width: 1050,
+    height: 600,
+    scale: 1,           // already at 300 DPI pixel dimensions
+    useCORS: true,
+    backgroundColor: null
+  }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = filename;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    btn.disabled = false;
+    btn.textContent = btn.textContent; // reset
+    location.reload(); // reset button labels cleanly
+  }).catch(err => {
+    alert('Export failed: ' + err.message);
+    btn.disabled = false;
+  });
+}
+</script>
 </body>
 </html>
