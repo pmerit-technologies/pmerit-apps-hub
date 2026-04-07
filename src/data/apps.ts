@@ -13,7 +13,7 @@ export const apps: AppInfo[] = [
   {
     id: 'aixord',
     name: 'AIXORD',
-    description: 'AI-governed project execution. Plan, build, and ship software with structured governance.',
+    description: 'AI-governed project execution with 11-phase delivery, 55 governance gates, and AOPC operational readiness. Plan, build, and ship with zero-trust verification. PWA mobile Director remote included.',
     status: 'live',
     category: 'AI Tools',
     url: 'https://aixord.pmerit.com',
